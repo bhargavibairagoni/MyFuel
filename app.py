@@ -3,19 +3,13 @@ import numpy as np
 import pandas as pd
 import joblib
 import pickle
-
-
 app = Flask(__name__)
-
 model = joblib.load('regressor.pkl')
 onehot = joblib.load('OneHotee.joblib')
-
-
 @app.route('/')
 @app.route('/main')
 def main():
 	return render_template('main.html')
-
 @app.route('/predict',methods=['POST'])
 def predict():
 	int_features =[[x for x in request.form.values()]]
@@ -29,13 +23,8 @@ def predict():
 	final =pd.concat([l2,t],axis=1)
 	result = model.predict(final)
 	print("The Result is :",result)
-
-
 	print(int_features)
-
 	return render_template("main.html",prediction_text="Your Vehicle Fuel Consumption is : {}".format(result))
-
-
 if __name__ == "__main__":
 	app.debug=True
-	app.run(host='0.0.0.0', port=5000)
+	app.run(host='0.0.0.0', port=8000)
