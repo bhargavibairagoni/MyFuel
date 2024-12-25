@@ -20,7 +20,7 @@ def predict():
 	c = onehot.get_feature_names_out()
 	t = pd.DataFrame(l,columns=c)
 	l2 = df.iloc[:,5:]
-	final =pd.concat([l2,t],axis=1)
+	final =pd.concat([l2,t],axis=2)
 	result = model.predict(final)
 	print("The Result is :",result)
 	print(int_features)
