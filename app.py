@@ -27,4 +27,4 @@ def predict():
 	return render_template("main.html",prediction_text="Your Vehicle Fuel Consumption is : {}".format(result))
 if __name__ == "__main__":
 	app.debug=True
-	app.run(host='0.0.0.0', port=9091)
+	app.run(host='0.0.0.0', port=9000)
